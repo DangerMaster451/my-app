@@ -1,11 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
-import cover from './assets/i love my computer.jpg'
+const albums = [
+  {
+    "title": "I Love My Computer",
+    "artist": "Ninajirachi",
+    "cover": require('./assets/i love my computer.jpg')
+  },
+  {
+    "title": "Good At Falling",
+    "artist": "The Japanese House",
+    "cover": require('./assets/good at falling.jpg')
+  },
+]
 
-const title = "I Love My Computer";
-const artist = "Ninajirachi";
-
-function Album() {
+function Album(index) {
   return (
     <div style={{
       paddingTop: '10%',
@@ -17,7 +23,7 @@ function Album() {
         alignItems: 'center',
         justifyContent: 'center',
       }}>
-        <img src={cover} style={{
+        <img src={albums[index].cover} style={{
           width:"15%", 
           height:"15%",
           marginTop:"2%",
@@ -32,7 +38,7 @@ function Album() {
         height:'auto',
         overflow: 'hidden',
       }}>
-        <img src={cover} style={{
+        <img src={albums[index].cover} style={{
           width:"15%",
           height:"15%",
           boxShadow: '1px 2px 9px black',
@@ -56,7 +62,7 @@ function Album() {
         fontWeight: 'bold',
         marginTop: '-13%',
         color: 'white',
-      }}>{title}</p>
+      }}>{albums[index].title}</p>
 
       <p style={{
         display: 'flex',
@@ -66,14 +72,15 @@ function Album() {
         fontWeight: 'bold',
         fontSize: '24px',
         color: 'white'
-      }}>{artist}</p>
+      }}>{albums[index].artist}</p>
     </div>
   )
 }
 
 function App() {
   return (
-    Album()
+    Album(0),
+    Album(1)
   );
 
 }
