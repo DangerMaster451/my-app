@@ -1,3 +1,5 @@
+import { motion } from "motion/react"
+
 const albums = [
   {
     "title": "I Love My Computer",
@@ -13,21 +15,39 @@ const albums = [
     "title": "In Rainbows",
     "artist": "Radiohead",
     "cover": require('./assets/in rainbows.jpg')
-  }
+  },
+  {
+    "title": "Metropolis Pt 2",
+    "artist": "Dream Theater",
+    "cover": require('./assets/metropolis 2.jpg')
+  },
+  {
+    "title": "Perihelion",
+    "artist": "Sungazer",
+    "cover": require('./assets/perihelion.jpg')
+  },
+
 ]
 
-const albumSize = '400px'
+const albumSize = "400px"
+const totalDisplayedAlbums = 5
 
 function Album(index) {
+  var positionRelToCenter = index - Math.floor(totalDisplayedAlbums/2)
+  var skewAngle = positionRelToCenter * 7
+  var scale = (-0.04 * positionRelToCenter*positionRelToCenter) + 1
+    
   return (
     <div style={{
-      margin: '10px'
+      margin: '25px',
+      transform: `skewY(${skewAngle}deg)`,
+      scale: scale,
     }}>
       <div style={{
         justifyContent: 'center',
       }}>
         <img src={albums[index].cover} style={{
-          width:albumSize, 
+          width:albumSize,
           height:albumSize,
           boxShadow: "rgba(255, 255, 255, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px",
           borderRadius: "2%",
@@ -84,7 +104,10 @@ function App() {
     }}>
       {Album(0)},
       {Album(1)},
-      {Album(2)}
+      {Album(2)},
+      {Album(3)},
+      {Album(4)},
+      
     </div>
   );
 
